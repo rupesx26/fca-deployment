@@ -1,0 +1,227 @@
+@import '../styles/mixins';
+@import '../styles/typography';
+body {
+    overflow: hidden;
+}
+
+body::-webkit-scrollbar { 
+    display: none; 
+ }
+
+body .page-wrapper { //Hot fix
+    max-width: unset;
+}
+.banner {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    padding-top: 30px;
+    .title {
+        font-size: 8.5vw;
+        text-align: center;
+        color: #000000;
+        margin: 0 auto;
+        line-height: 1;
+        font-family: @font-nexa-bdrg;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: -.01783333em;
+        width: 49vw;
+    }
+    .sub-title {
+        font-size: 1.4vw;
+        line-height: 1;
+        color: #000000;
+        font-family: @font-nexa-ltrg;
+        word-spacing: 0.2em;
+        margin-bottom: 1.8em;
+    }
+}
+
+   
+.home-carousel-wrapper{
+    position: relative;
+     height: 100vh;
+
+    .slide-container {
+       
+        .slide-wrapper {
+            padding: 0 8.33333333vw 0 16.66666667vw;
+            display: flex;
+            align-items: center;
+        }
+        .slide {
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate3d(0,-50%,0);
+            transform: translate3d(0,-50%,0);
+            left: 0;
+            width: 100%;
+            visibility: hidden;
+            opacity: 0;
+            
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            z-index: 2;
+            &._is-active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .slide-link {
+               pointer-events: auto;
+                width: 100%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                text-decoration: none;
+            }
+            .image-container {
+               
+                &._green {
+                    background-color: #8cff9f;
+                }
+                &._yellow {
+                    background-color: #ffe200;
+                }
+                &._blue {
+                    background-color: #0b31d0;
+                }
+                &._brown {
+                    background-color: brown;
+                }
+                &._red {
+                    background-color: red;
+                }
+                &._black {
+                    background-color: black;
+                }
+                &._pink {
+                    background-color: #ff00c4;
+                }
+                .img-box {
+                    width: 65%;
+                    position: absolute;
+                    img{
+                        max-width: 100%;
+                    }
+                }
+            }
+            .slide-left-wrap {
+                width: calc(25.33333333vw + 33px);
+                z-index: 1;
+                position: relative;
+                overflow: hidden;
+                transition-property: all;
+                transition-duration: .5s;
+                transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            }
+            .slide-left-mask {
+                 &:after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 135.93%
+                }
+            }
+            .__left {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                background-position: 50%;
+                background-size: cover;
+            }
+
+            .__right {
+                width: calc(33.33333333vw + 183px);
+                color: #000;
+                position: relative;
+                padding-left: 5.8em;
+                white-space: nowrap;
+            }
+
+            .content {
+                .title {
+                    font-size: 4.2em;
+                    font-weight: bold;
+                    color: #000000;
+                    font-family: @font-nexa-bdrg;
+                    line-height: 1.2;
+                }
+                .subtitle {
+                    font-size: 1.3vw;
+                    position: relative;
+                    // padding-left: 40px;
+                    // margin-left: 7px;
+                    font-family: @font-nexa-ltrg;
+                    // &:before {
+                    //     content: '';
+                    //     width: 28px;
+                    //     height: 1px;
+                    //     background: #000;
+                    //     position: absolute;
+                    //     left: 0;
+                    //     bottom: 10px;
+                    // }
+                }
+            }
+        }
+    }
+}
+
+
+  
+.pagination {
+    position: absolute;
+    height: 230px;
+    top: 50%;
+    right: 4.16666667vw;
+    margin-top: -115px;
+    text-align: center;
+}
+
+.pagination__number {
+    font-size: 1.2em;
+    font-weight: 700;
+    &.pagination__number--first {
+        margin-bottom: 25px;
+    }
+    .pagination__number--last {
+        margin-top: 25px;
+    }
+}
+
+.pagination__bar-wrapper {
+    height: 153px;
+    width: 1px;
+    position: relative;
+    background: rgba(0,0,0,.24);
+    display: block;
+    margin: 0 auto;
+
+    .pagination__bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        background: #000;
+        height: 100%;
+        -webkit-transform-origin: top center;
+        transform-origin: top center;
+    }
+    
+}

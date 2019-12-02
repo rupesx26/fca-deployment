@@ -1,0 +1,57 @@
+@base: 0.8rem;
+@cols: 12;
+@gutter: 20px;
+@container-width: 100%;
+
+@break-xsmall: 577px;
+@break-small: 769px;
+@break-medium: 1025px;
+@break-large: 1441px;
+
+// Loop for normal cols
+.generateCols(@counter) when (@counter > 0) {
+  @width: (@counter / @cols ) * 100;
+  .col-md-@{counter} {
+    flex-basis: ~"@{width}%";
+    max-width: ~"@{width}%";
+  }
+  
+  .col-offset-md-@{counter} {
+    margin-left: ~"@{width}%";
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-sm-@{counter} {
+      flex-basis: ~"@{width}%";
+      max-width: ~"@{width}%";
+    }
+    .col-offset-sm-@{counter} {
+      margin-left: ~"@{width}%";
+    }
+  }
+
+  @media only screen and (min-width : 320px) and (max-width : 480px) and (min-device-width : 320px) and (max-device-width : 480px)  {
+    .col-sm-@{counter} {
+      flex-basis: ~"@{width}%";
+      max-width: ~"@{width}%";
+    }
+    .col-offset-sm-@{counter} {
+      margin-left: ~"@{width}%";
+    }
+  }
+
+  .generateCols((@counter - 1));
+}
+
+
+.font-face(@font-family, @filepath, @font-weight, @font-style){
+    @font-face {
+        font-family: @font-family;
+        src: url('@{filepath}.woff2')format('woff2');
+        src:url('@{filepath}.woff')format('woff');
+        font-weight:@font-weight;
+        font-style:@font-style;
+    }
+}
+
+

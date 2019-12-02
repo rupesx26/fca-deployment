@@ -1,0 +1,51 @@
+/* Home page responsive start*/
+
+
+.media-mixin(@break) when (@break = @break-small) {
+	
+}
+
+
+.media-mixin(@break) when (@break = @break-large) {
+	.home-carousel-wrapper{
+		.slide-container { 
+			.slide { 
+				.slide-left-wrap {
+					width: calc(25vw + 33px);
+				}
+			}
+		}
+	}
+}
+
+
+/* Home page responsive end*/
+
+
+
+/* Work page responsive start */
+
+.media-mixin(@break) when (@break = @break-large) {
+	.portfolio-page {
+		.work-wrapper {
+			// .work-image {
+			// 	height: 55.55vh;
+			// }
+		} 
+	} 
+}
+
+
+/* Work page responsive end */
+
+
+
+/*Combine all media queries*/
+
+@media screen and (min-width: @break-small) {
+    .media-mixin(@break-small);
+}
+
+@media screen and (max-width: @break-large) {
+    .media-mixin(@break-large);
+}

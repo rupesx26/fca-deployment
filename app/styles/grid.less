@@ -1,0 +1,55 @@
+/* Flex grid 2 column*/
+
+.container {
+  width: @container-width;
+  display: block;
+  margin: auto;
+  // max-width: 1280px;
+
+  .row {
+    flex-direction: row;
+
+    &.reverse {
+      flex-direction: row-reverse;;
+    }
+  }
+
+
+  .row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    margin-right: @gutter;
+    margin-left: @gutter;
+
+    &.no-wrap {
+      flex-wrap: nowrap;
+    }
+
+    [class^="col-"] {
+        box-sizing: border-box;
+        flex-grow: 0;
+        flex-shrink: 0;
+        padding-right: @gutter / 2;
+        padding-left: @gutter / 2;
+    }
+    &.no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+      }
+
+    .no-gutters {
+      padding-right: 0;
+      padding-left: 0;
+      }
+      .no-gutters-left {
+        padding-left: 0;
+      }
+      .no-gutters-right {
+        padding-right: 0;
+      }
+
+    .generateCols(@cols);
+  }
+}

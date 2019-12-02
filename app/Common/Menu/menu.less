@@ -1,0 +1,123 @@
+@import '../../styles/mixins';
+@import '../../styles/typography';
+
+.menu-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  opacity: 0.9;
+  display:flex;
+  align-items:center;
+  width: 100%;
+  color: white;
+}
+.menu-list-container {
+
+  .footer-social-icons {
+    position: absolute;
+    bottom: 28px;
+    right: 60px;
+    height: 22px;
+    width: 13%;
+    text-align: center;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+    .icon-box {
+        /* display: flex; */
+        flex-basis: 22%;
+        justify-content: right;
+        text-align: right;
+        svg {
+            width: 15px;
+            fill: #fff;
+        }
+    }
+  }
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: black;
+    opacity: 1;
+    color: #fafafa;
+    transition: height 0.6s ease;
+    z-index: 15;
+    ul {
+        padding: 12.333333vw 14.666667vw;
+        list-style: none;
+    }
+    .list-item-wrapper {
+      font-size: 5.5em;
+      font-weight: bold;
+      line-height: 1.23;
+      text-align: left;
+      color: #ffffff;
+      position: relative;
+      opacity: 0;
+        a {
+          text-decoration: none;
+          &:hover {
+            .pos {
+              color: #fff;
+            }
+          }
+        }
+        .pos {
+          font-size: 0.25em;
+          font-weight: 600;
+          position: absolute;
+          left: 10px;
+          font-family: @font-work-sans;
+        }
+      .list-item {
+        padding: 1rem 0;
+        margin: 0 5%;
+        cursor: pointer;
+        margin-bottom: 35px;
+        font-family:  @font-nexa-bdrg;
+        position: relative;
+
+      }
+      .line {
+        width: 90%;
+        height: 1px;
+        background: gray;
+        margin: 0 auto;
+        display: none;
+        
+      }
+    }
+}
+.hamburger {
+    height: 30px;
+    width: 25px;
+    position: fixed;
+    top: 56px;
+    right: 52px;
+    cursor: pointer;
+.line {
+        height: 2px;
+        background: #000;
+        margin-bottom: 3px;
+        width: 100%;
+        display: block;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+        &:nth-child(3s) {
+            margin-bottom: 0;
+        }
+        &:nth-child(2) {
+            transform-origin: top left;
+        }
+        &:nth-child(1) {
+           transform-origin: top left;
+        }
+    }
+}
+
+

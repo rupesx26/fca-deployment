@@ -1,0 +1,465 @@
+/**
+1. button
+2. animation
+3. breakpoints
+4. modals
+5. normalize
+6. reset
+
+Used bem method for css stucture for more information visit :- http://getbem.com/introduction/
+*/
+
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+ @import (css) url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap');
+
+body {
+    font-family: 'nexa_lightregular';
+}
+
+//Fonts
+.font-face('nexa_boldregular', '../Public/fonts/nexa_bold-webfont', normal, normal);
+.font-face('nexa_lightregular', '../Public/fonts/nexa_light-webfont',  normal, normal);
+
+.font-face('Nexa-Bold', '../Public/fonts/39C10C_0_0',  normal, normal);
+.font-face('Nexa-Light', '../Public/fonts/39C10C_1_0',  normal, normal);
+
+
+ html, body {
+	border: 0;
+	line-height: 1.5;
+	margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  font-size: 10px;
+  font-size: 100%;
+}
+
+div, span, object, iframe, img, table, caption, thead, tbody,
+tfoot, tr, tr, td, article, aside, canvas, details, figure, hgroup, menu,
+nav, footer, header, section, summary, mark, audio, video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cit, code,
+del, dfn, em, ins, q, samp, small, strong, sub, sup, b, i, hr, dl, dt, dd,
+ol, ul, li, fieldset, legend, label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased!important;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  caption, th, td {
+    text-align: left;
+    vertical-align: middle;
+  }
+}
+
+a img {
+  border: 0;
+}
+
+:focus {
+  outline: 0;
+}
+*{
+  box-sizing: border-box;
+}
+
+/*Template*/
+
+.align-right {
+  text-align: right;
+}
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+.align-center-mar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+.text-block {
+  display: block;
+}
+.bg-color-yellow {
+  background: #ffe200;
+}
+
+.bg-color-gray {
+  background: #f2f2f2;
+}
+
+.bg-color-black {
+  color: #fff;
+  background: #000;
+}
+
+.bg-color-while {
+  background: #fff;
+}
+.full-width-height {
+  width: 100%;
+  height: 100%;
+}
+
+.full-page-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    bottom: -3em;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-3.5%);
+    margin-top: -10%;
+  }
+  100% {
+    transform: translateY(0);
+    margin-top: 0;
+  }
+}
+
+
+
+@keyframes shrink {
+  0% {
+    width: 95%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+
+
+.none {
+  display: none!important;
+}
+.justify-content-right {
+  justify-content: flex-end!important;
+}
+
+.justify-content-left {
+  justify-content: flex-start!important;
+}
+
+.justify-content-center {
+  justify-content: center!important;
+}
+
+.page-footer .page-footer-wrapper .page-footer-content .title:hover{
+  // color: gray;
+  .footer-arrow {
+    opacity: 1;
+  }
+}
+.page-footer .page-footer-wrapper .page-footer-content .title.invert {
+  .chevron:before,
+  .chevron:after {
+    background: #000;
+  } 
+}
+
+.footer-arrow {
+  width: 7rem;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+.chevron {
+  position: absolute;
+  width: 3rem;
+  height: 0.5rem;
+  opacity: 0;
+  transform: scale(0.3);
+  animation: move-chevron 3s ease-out infinite;
+  left: 50%;
+  margin-left: -1.5rem;
+}
+
+.chevron:first-child {
+  animation: move-chevron 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move-chevron 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+ content: '';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: rgba(255,255,255, 0.9);
+}
+
+.chevron:before {
+ left: 0;
+ transform: skewY(30deg);
+}
+
+.chevron:after {
+ right: 0;
+ width: 50%;
+ transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+ 25% {
+  opacity: 1;
+	}
+ 33.3% {
+  opacity: 1;
+  transform: translateY(@base * 3.8);
+ }
+ 66.6% {
+  opacity: 1;
+  transform: translateY(@base * 5.2);
+ }
+ 100% {
+  opacity: 0;
+  transform: translateY(@base * 8) scale(0.5);
+ }
+}
+
+
+.lazy-load-image-background.blur {
+	filter: blur(15px);
+  }
+  
+  .lazy-load-image-background.blur.lazy-load-image-loaded {
+	filter: blur(0);
+	transition: filter .3s;
+  }
+  
+  .lazy-load-image-background.blur > img {
+	opacity: 0;
+  }
+  
+  .lazy-load-image-background.blur.lazy-load-image-loaded > img {
+	opacity: 1;
+	transition: opacity .3s;
+  }
+
+
+  .lazy-load-image-background.black-and-white {
+	filter: grayscale(1);
+  }
+  
+  .lazy-load-image-background.black-and-white.lazy-load-image-loaded {
+	filter: grayscale(0);
+	transition: filter .3s;
+  }
+  
+  .lazy-load-image-background.black-and-white > img {
+	opacity: 0;
+  }
+  
+  .lazy-load-image-background.black-and-white.lazy-load-image-loaded > img {
+	opacity: 1;
+	transition: opacity .3s;
+  }
+
+  .lazy-load-image-background.opacity {
+    background-image: none !important;
+    opacity: 0;
+  }
+  
+  .lazy-load-image-background.opacity.lazy-load-image-loaded {
+    opacity: 1;
+    transition: opacity .3s;
+  }
+
+  .loader-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-wrapper {
+    .iframe-wrapper {
+      width: 100%;
+      min-height: 36vw;  
+    } 
+  }
+ 
+ .bg-blog-wrapper {
+   width: 100%;
+   height: 100vh;
+   z-index: 0;
+   position: fixed;
+   margin-left: -50%;
+   left: 50%;
+   opacity: 0.3;
+ }
+
+ .vimeo-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  iframe {
+    width: 100vw;
+    height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+    min-height: 100vh;
+    min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+    &.no-fullscreen {
+      iframe {
+        position: unset;
+        width: 100%;
+        height: 56.25vw;
+        min-height: 100vh;
+        transform: none;
+        min-width: unset; 
+      }
+    }  
+}
+.clear {
+  clear: both;
+}
+
+/*blob*/
+.blob-wrapper {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+#svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#path1 {
+/*   fill: rgba(0,0,0,0.5); */
+/*   stroke-width: 1px; */
+/*   stroke: blue; */
+  animation: colorchange 30s ease-out infinite;
+  opacity: 0.5;
+}
+
+#path2 {
+/*   fill: rgba(0,0,0,0.3); */
+/*   stroke-width: 4px; */
+/*   stroke: #ff1100; */
+  animation: colorchange 30s ease-out infinite;
+  opacity: 0.3;
+  
+}
+#path3 {
+/*   fill: rgba(0,0,0,0.8); */
+  animation: colorchange 30s ease-out infinite;
+}
+
+#path4 {
+  fill: rgba(0,0,0,0.0);
+  stroke: rgba(255,255,255, 1);
+  animation: strokeColor 30s ease-out infinite;
+  z-index: 5;
+}
+#path5 {
+   animation: colorchange 30s ease-out infinite;
+  opacity: 0.1;
+  stroke: rgba(255,255,255, 1);
+  animation: strokeColor 30s ease-out infinite;
+}
+
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px;
+}
+
+.dot {
+  fill: #1a237e;
+  fill-opacity: 0.3;
+  stroke: #1a237e;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+@keyframes from0to360 {
+  from{transform:rotate(0);}
+  to{transform:rotate(360deg);}
+}
+
+
+@keyframes colorchange {
+    0% {
+      fill: #e91c23;
+    }
+    12% {fill: #f6e307;}
+    25% {fill: #00b3da;}
+  55% {fill: #e82e81;}
+  75% {fill: #5e2b87;}
+  100% {fill: #1f1f20;}
+}
+
+@keyframes strokeColor {
+    0% {stroke: #e91c23;}
+    12% {stroke: #f6e307;}
+    25% {stroke: #00b3da;}
+  55% {stroke: #e82e81;}
+  75% {stroke: #5e2b87;}
+  100% {stroke: #1f1f20;}
+}
