@@ -167,6 +167,8 @@ class Carousel extends Component {
       TweenMax.staggerFromTo("._title-anim", 1.1, {y:-80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
       TweenMax.staggerFromTo("._subtitle-anim", 1.1, {y:80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
       TweenLite.fromTo(".img-box",1.4, {yPercent:-100, xPercent: 0, opacity: 0}, {yPercent:0, xPercent: 0, opacity:1, force3D: !1} );
+      TweenMax.fromTo(".blob-outer", 1.6, {y:80, opacity:0, scale:0, ease:Power4.easeInOut}, {y:0, scale:1, opacity:1, ease:Power4.easeInOut}, '=-.9');
+
     }
     console.log("activateFirstSlide");
     }
@@ -192,6 +194,8 @@ class Carousel extends Component {
           TweenMax.staggerFromTo("._title-anim", 1.1, {y:-80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
           TweenMax.staggerFromTo("._subtitle-anim", 1.1, {y:80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
           TweenLite.fromTo(".img-box",1.4, {yPercent:100, xPercent: 0, opacity: 0}, {yPercent:0, xPercent: 0, opacity:1, force3D: !1} );
+          TweenMax.fromTo(".blob-outer", 1.6, {y:80, opacity:0, scale:0, ease:Power4.easeInOut}, {y:0, scale:1, opacity:1, ease:Power4.easeInOut}, '=-.9');
+
       }
     }
     
@@ -238,8 +242,8 @@ class Carousel extends Component {
               TweenMax.staggerFromTo("._title-anim", 1.1, {y:-80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
               TweenMax.staggerFromTo("._subtitle-anim", 1.1, {y:80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
               TweenLite.fromTo(".img-box", 1.4, {yPercent:-100, xPercent: 0, opacity: 0}, {yPercent:0, xPercent: 0, opacity:1, force3D: !1} );
-            
-                  
+              TweenMax.fromTo(".blob-outer", 1.6, {y:80, opacity:0, scale:0, ease:Power4.easeInOut}, {y:0, scale:1, opacity:1, ease:Power4.easeInOut}, '=-.9');
+
             }
             else{
               TweenLite.fromTo('.slide-left-mask',1.3,
@@ -256,6 +260,8 @@ class Carousel extends Component {
             TweenMax.staggerFromTo("._title-anim", 1.1, {y:-80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
             TweenMax.staggerFromTo("._subtitle-anim", 1.1, {y:80, opacity:0, ease:Power4.easeInOut}, {y:0, opacity:1, ease:Power4.easeInOut});
             TweenLite.fromTo(".img-box",1.4, {yPercent:100, xPercent: 0, opacity: 0}, {yPercent:0, xPercent: 0, opacity:1, force3D: !1} );
+            TweenMax.fromTo(".blob-outer", 1.6, {y:80, opacity:0, scale:0, ease:Power4.easeInOut}, {y:0, scale:1, opacity:1, ease:Power4.easeInOut}, '=-.9');
+
             }
           }
   		}
@@ -301,6 +307,15 @@ class Carousel extends Component {
                                     </div>
                                   </div>
                                   <div className='content __right'>
+                                      <div className='blob-outer'>
+                                        <div className='blob-wrapper'>
+                                            <div className='blob-layer-1'></div>
+                                            <div className='blob-layer-2'></div>
+                                            <div className='blob'></div>
+                                            <div className='blob-layer-3'></div>
+                                        </div>
+                                      </div>
+                                     
                                       <h5 className='title _title-anim'>{item.title}</h5>
                                       <div className='subtitle _subtitle-anim'>{item.subtitle}</div>
                                   </div>

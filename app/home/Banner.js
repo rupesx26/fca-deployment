@@ -9,6 +9,7 @@ class Banner extends Component {
         this.textTween = null;
         this.charItems = [];
         this.getTextChars = this.getTextChars.bind(this)
+        this.dummyTextRender = this.dummyTextRender.bind(this)
       }
     
       getTextChars = chars => {
@@ -22,7 +23,18 @@ class Banner extends Component {
           { autoAlpha: 0 },
           0.1
         );
-      }
+        
+  }
+
+  dummyTextRender() {
+    const text = ['hello', 'world']
+   text.map((i,v)=> {
+      return (
+      <div key={i}>{v}</div>
+      )
+    })
+  }
+
     render() { 
         return ( 
             <section className='banner'>
@@ -31,6 +43,7 @@ class Banner extends Component {
                   <div className='col-md-10'>
                   <h2 className='sub-title'>We are FINDCreative Ave.</h2>
                     <h1 className='title'>
+                      {this.dummyTextRender}
                         <ReactSplitText
                             text="to create is to unite"
                             getTextChars={this.getTextChars}
