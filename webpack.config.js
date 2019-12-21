@@ -191,7 +191,7 @@ module.exports = {
     writeToDisk: true,
     inline: true,
     historyApiFallback: true,
-    port: 9090 // port to run dev-server
+    port: 9000 // port to run dev-server
     //host: '0.0.0.0'
   }
 };

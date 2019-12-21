@@ -296,7 +296,7 @@ class Carousel extends Component {
              this.state.data.map((item,i)=> {
                 return (
                         <div className='slide' data-slideindex={i} key={i}>
-                            <a className='slide-link' href={item.route}>
+                            <a className='slide-link' href={`#/${item.route}`}>
                               <div className='slide-wrapper'>
                                   <div className='slide-left-wrap'>
                                     <div className='slide-left-mask'>

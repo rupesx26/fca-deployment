@@ -150,7 +150,6 @@ class PortfolioContainer extends Component {
 
 
   componentDidMount() {
-      //console.log(this.workBox.length)
       const workBoxHeight = this.workBox[0].clientHeight
       const portfolioContainerHeight = workBoxHeight * this.workBox.length / 1.25
 
@@ -159,57 +158,68 @@ class PortfolioContainer extends Component {
         boxPosition: workBoxHeight
       })
 
-      this.pageAmimation()
+      this.pageAmimation(workBoxHeight)
   }
 
-  pageAmimation() {
-
+  pageAmimation(workBoxHeight) {
     //	TweenMax.to('.banner-img-container', 1.5, {autoAlpha: 0.1, scale: 1.5, y: 0, ease:Power2.easeOut})
+
+    // TweenMax.to('.work-wrapper-2', .5, {y:100})
+    // TweenMax.to('.work-wrapper', .5, {y:-80})
+    // TweenMax.to('.work-wrapper-2 .work-image', .1, {clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"})
+    // TweenMax.to('.work-wrapper-2 .work-details', .5, {y:100, opacity:0 })
+
     const data = this.state.data
     
+
     const slidesWrapper = document.querySelectorAll('.work-wrapper-2')
     const finalData =  this.groupBy(data, function(item) {
       return [item.row]
       });
-
+      
       finalData.map((itemArr, idx) => {
-        const animation = new TimelineLite(),
-            animation2 = new TimelineLite()
-       
-        itemArr.map((item, index)=>{
-         
-            animation
-            .fromTo(`#${item.route}.work-wrapper:first-child`, .7, {y:100}, {y: 0, ease: Power1.easeInOut}, '-=1')
-            .fromTo(`#${item.route}.work-wrapper:first-child .work-details`, .7, {y:100, opacity:0}, {y:0, opacity:1, ease: Power1.easeInOut}, '-=.69')
-            .fromTo(`#${item.route}.work-wrapper:first-child .work-image`, .7, {clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"}, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", ease: Power4.easeOut, force3D: 0}, '-=1')
-            
-            animation
-            .fromTo(`#${item.route}.work-wrapper:last-child`, .7, {y:100}, {y:0, ease: Power1.easeInOut}, '-=.80')
-            .fromTo(`#${item.route}.work-wrapper:last-child .work-details`, .7, {y:100, opacity:0}, {y:0, opacity:1, ease: Power1.easeInOut}, '-=.85')
-            .fromTo(`#${item.route}.work-wrapper:last-child .work-image`, .7, {  y:100, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }, { y:0,  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", ease: Power4.easeOut, force3D: 0}, '-=.85')
+        const initAnimation = new TimelineLite(),
+              textAnimation = new TimelineLite(),
+              wrapperAnimation = new TimelineLite()
 
-            animation2
-              .fromTo(`#${item.route}.work-wrapper:last-child`, .2, {y: 0}, {y: -40, ease: Power0.easeInOut}, '-=1')
-              .fromTo(`#${item.route}.work-wrapper:first-child`, .3, {y: 0}, {y: -80, ease: Power0.easeInOut}, '-=1')
+        itemArr.map((item, index)=>{
+          
+          wrapperAnimation
+          .fromTo(`.work-wrapper:first-child`, .5, {y: 60}, {y: 0, ease: Power0.easeInOut}, '-=0.40')
+          .fromTo(`.work-wrapper:last-child`, .5, {y: 0}, {y: 60, ease: Power0.easeInOut}, '-=0.70')
+          initAnimation
+          .fromTo(`#${item.route}.work-wrapper .work-image`,0.7, {clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"}, {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", ease: Power0.easeOut})
+          textAnimation
+          .fromTo(`#${item.route}.work-wrapper .work-details h5`, .7, {y:50, opacity:0}, {y:0, opacity:1, ease: Power0.easeInOut}, '-=.69')
+          .fromTo(`#${item.route}.work-wrapper .work-details h4`, .7, {y:180, opacity:0}, {y:0, opacity:1, ease: Power0.easeInOut}, '-=1')
 
         })
 
-        new ScrollMagic.Scene({triggerElement: slidesWrapper[idx], triggerHook:1, duration: '300', reverse: false})
-          .setTween(animation)
+        new ScrollMagic.Scene({triggerElement: slidesWrapper[idx], triggerHook:.7, duration: '400px',  offset: 300, reverse: true})
+        .setTween(wrapperAnimation)
+        .addTo(this.controller)
+        // .addIndicators({
+        //   name: 'wrapperAnimation',
+        //   colorTrigger : 'orange'
+        // })
+
+        new ScrollMagic.Scene({triggerElement: slidesWrapper[idx], triggerHook:.85, duration: workBoxHeight +'px', reverse: false})
+          .setTween(initAnimation)
           .addTo(this.controller)
-          //.addIndicators() 
+          // .addIndicators({
+          //   name: 'initAnimation',
+          //   colorTrigger : 'blue'
+          // }) 
 
-          
-
-          new ScrollMagic.Scene({triggerElement: slidesWrapper[idx], triggerHook:.5, duration: '300', reverse: true})
-          .setTween(animation2)
+          new ScrollMagic.Scene({triggerElement: slidesWrapper[idx], triggerHook:.7, duration: '300px', reverse: false})
+          .setTween(textAnimation)
           .addTo(this.controller)
-          //.addIndicators() 
-
-      })
-
-    
-
+          // .addIndicators({
+          //   name: 'textAnimation',
+          //   colorTrigger : 'pink'
+          // }) 
+         
+        })
     }
 
   arrayFromObject(obj) {
@@ -281,7 +291,6 @@ class PortfolioContainer extends Component {
                       )
                   })
                 }
-                
                 </div>
               </div>
               }
